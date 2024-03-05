@@ -1,0 +1,15 @@
+/node_modules/
+/Test/
+/jusgado/
+/jusgado
+/userAdmin
+/userAdmin/
+/target/
+/.metadata/
+/hello/
+/lib/
+/.settings/
+/RemoteSystemsTempFiles/
+.classpath
+..classpath
+.project
