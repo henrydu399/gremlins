@@ -1,0 +1,182 @@
+<div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+  
+    </div>
+    <div class="card-body">
+      <form method="post" ng-submit="vm.action()" >
+  
+        <div class="row">
+          
+          <div class="col-lg-6" >
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">RESPONSABLE ACTIVIDAD</h6>
+            </div>
+            <div class="card-body" >  
+  
+             <div class="row">
+              <div class="col-lg-6" >
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-3 col-form-label">ID USUARIO:</label>
+                  <div class="col-sm-7">
+                    <input type="text" class="form-control" id="uIdUsuario" name="uIdUsuario" placeholder="id usuarios"
+                        ng-model="vm.model.userViewDto.uIdUsuario" required disabled>
+                  </div>
+                  <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalUsuarios" id="#modalLong"> <i class="fas fa-search fa-fw"></i></button>
+                  </div>
+                </div>
+                </div>
+  
+                <div class="col-lg-6" >
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">ROL:</label>
+                    <div class="col-sm-6">
+                          <input type="text" class="form-control" id="ruNombreRol" name="ruNombreRol" 
+                          ng-model="vm.model.userViewDto.ruNombreRol" required disabled>
+  
+                    </div>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control" id="ruIdRol" name="ruIdRol" 
+                      ng-model="vm.model.userViewDto.ruIdRol" required disabled>
+                    </div>
+                  </div>
+                </div>
+             </div>
+  
+  
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label"># IDENTIFICACION:</label>
+                <div class="col-sm-9">
+                  <input type="text" class="form-control" id="uNumeroIdentificacion" name="uNumeroIdentificacion" 
+                      ng-model="vm.model.userViewDto.uNumeroIdentificacion" required disabled>
+                </div>
+              </div>
+  
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label"> NOMBRE COMPLETO:</label>
+                <div class="col-sm-9">
+                      <input type="text" class="form-control" id="pPrimerNombre" name="pPrimerNombre" 
+                      ng-model="vm.model.userViewDto.pPrimerNombre" required disabled>
+                      <input type="text" class="form-control" id="pSegundoNombre" name="pSegundoNombre" 
+                      ng-model="vm.model.userViewDto.pSegundoNombre" required disabled>
+                      <input type="text" class="form-control" id="pPrimerApellido" name="pPrimerApellido" 
+                      ng-model="vm.model.userViewDto.pPrimerApellido" required disabled>
+                      <input type="text" class="form-control" id="pSegundoApellido" name="pSegundoApellido" 
+                      ng-model="vm.model.userViewDto.pSegundoApellido" required disabled>
+                </div>
+              </div>
+  
+  
+  
+            </div>
+           </div>  
+           
+           
+           <div class="col-lg-6" >
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">INFORMACION GENERAL</h6>
+            </div>
+            <div class="card-body" >
+             
+  
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">ID PROCESO</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" id="pIdProceso" name="pIdProceso" placeholder="id proceso"
+                      ng-model="vm.model.juzProcesosViewDto.pIdProceso" required>
+                </div>
+                <div class="col-sm-2">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalProcesos" id="#modalLong"> <i class="fas fa-search fa-fw"></i></button>
+                </div>
+              </div>
+  
+              <div class="row">
+                  <div class="col-lg-6" >
+                    <div class="form-group">
+                      <label for="select2Single">TIPO DE LA ACTIVIDAD </label>
+                      <select class="select2-single form-control select2-hidden-accessible"    aria-hidden="true"  ng-model="vm.model.juzTipoActividadesProceso.tapIdActividad"  convert-to-number required>
+                        <option ng-repeat="item in vm.listTiposActividades track by $index" value="{{item.tapIdActividad}}" >{{item.tapNombreActividad}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6" >
+                    <div class="form-group">
+                      <label for="select2Single">ESTADO DE LA ACTIVIDAD</label>
+                      <select class="select2-single form-control select2-hidden-accessible"     aria-hidden="true"  ng-model="vm.model.apEstado"  convert-to-number required>
+                        <option ng-repeat="item in vm.listEstadosActividades track by $index" value="{{item.fIdFuncion}}" >{{item.fNombreFuncion}}</option>
+                      </select>
+                    </div>
+                  </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="exampleInputEmail1">NOMBRE DE LA TAREA  </label>
+                <input type="text" class="form-control" id="apNombreActividad" name="apNombreActividad" placeholder="NOMBRE ACTIVIDAD"
+                  ng-model="vm.model.apNombreActividad" >
+              </div>
+        
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">FECHA DE MAXIMA O TERMINO </label>
+                <div class="col-sm-9">
+                  <input type="date"  class="form-control" id="apFechaMaxima" name="apFechaMaxima" 
+                  ng-model="vm.model.apFechaMaxima" date-field  required>
+                </div>
+             
+              </div>
+
+
+              <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">NOMBRE PLANTILLA</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="pIPlantilla" name="pIPlantilla" placeholder="  "
+                      ng-model="vm.modelPlantillaSelect.nombrePlantilla" required>
+                </div>
+
+
+                <label for="inputEmail3" class="col-sm-3 col-form-label">ID PLANTILLA</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="pIPlantilla" name="pIPlantilla" placeholder="  "
+                      ng-model="vm.model.plantillaId" required>
+                </div>
+                <div class="col-sm-1">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPlantilla" id="#modalLong"> <i class="fas fa-search fa-fw"></i></button>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="row">
+          <label for="exampleInputEmail1">IMPLICADOS A NOTIFICAR</label>
+          <div class="slide-animate"  style="width: 100%;" ng-include="'componentes/actividades/implicadosNotificar.view.html'"></div>
+        </div>
+
+        <div class="row">
+          <label for="exampleInputEmail1">DOCUMENTOS A NOTIFICAR</label>
+          <div class="slide-animate"  style="width: 100%;" ng-include="'componentes/actividades/documentos.view.html'"></div>
+        </div>
+  
+        <div class="form-group">
+          <label for="exampleInputEmail1">DESCRIPCION ACTIVIDAD </label>
+        </div>
+
+
+        <textarea 
+        ui-tinymce="vm.tinymceOptionsActividades"
+        ng-model="vm.model.apDescripcionActividad">
+      </textarea>
+
+
+        <!-- <div ng-bind-html="vm.tinymceHtml"></div> -->
+  
+      
+  
+        <button type="submit" class="btn btn-primary"   ng-show="!vm.isEdit" >Guardar</button>
+        <button type="submit" class="btn btn-primary"   ng-show="vm.isEdit" >Editar</button>
+        <button type="button" class="btn btn-primary"  ng-click="vm.clean()" >Limpiar</button>
+  
+      </form>
+    </div>
+  </div>

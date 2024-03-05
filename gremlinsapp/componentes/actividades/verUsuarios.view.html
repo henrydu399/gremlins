@@ -1,0 +1,46 @@
+
+<div class="col-lg-12">
+    <div class="card mb-4">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary">RESULTADO DE USUARIOS</h6>
+      </div>
+      <div class="table-responsive p-3">
+        <table  conditional="vm.foo"  class="table table-striped" st-safe-src="vm.safelistUser" st-table="vm.listUsers">
+          <thead class="thead-light">
+            <tr>
+              <th st-sort="uIdUsuario" >ID USUARIO</th>
+              <th st-sort="" >NOMBRE COMPLETO</th>
+              <th st-sort="uNumeroIdentificacion" >NUMERO DOCUMENTO</th>
+              <th st-sort="ruNombreRol" >ROL</th>
+              
+            </tr>
+            <tr>
+              <th> <input st-search="uIdUsuario"  class="input-sm form-control" type="search" /> </th>
+              <th> </th>
+              <th> <input st-search="uNumeroIdentificacion"  class="input-sm form-control" type="search" /> </th>
+              <th> <input st-search="ruNombreRol"  class="input-sm form-control" type="search" /> </th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr ng-repeat="item in vm.listUsers track by $index">
+              <td><a  href="" ng-click="vm.selectUser(this.item)"  data-dismiss="modal">{{item.uIdUsuario}}</a></td>
+              <td>  {{ item.pPrimerNombre }} {{ item.pSegundoNombre }}  {{ item.pPrimerApellido }}  {{ item.pSegundoApellido }}   </td>
+              <td>{{item.uNumeroIdentificacion}}</td>
+              <td>{{item.ruNombreRol}}</td>
+
+  
+            </tr>
+          </tbody>
+          <tfoot ng-if="vm.foo" >
+            <tr>
+              <td colspan="5" class="text-center">
+                <div  st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div>
+              </td>
+            </tr>
+          </tfoot>
+  
+        </table>
+      </div>
+    </div>
+  </div>

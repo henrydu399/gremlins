@@ -1,0 +1,66 @@
+
+      <div class="table-responsive p-3">
+        <table  conditional="vm.foo"  class="table table-striped" st-safe-src="vm.listSafeDocumentos" st-table="vm.listDocumentos">
+          <thead class="thead-light">
+            <tr>
+              <th st-sort="juzProceso.pIdProceso" >PROCESO</th>
+              
+              <th st-sort="tdpNombreTipoDocumento" >NOMBRE DOCUMENTO</th>
+              <th st-sort="tdpDocumentoFechaCreacion" >FECHA DOCUMENTO</th>
+              <th st-sort="juzTipoDocumentoProceso.fdpNombreJuzTipoDocumento" >TIPO  DOCUMENTO PROCESO</th>
+              <th  >RESPONSABLE</th>
+              <th st-sort="apFechaMaxima" >NOMBRE ACTIVIDAD</th>
+  
+              <th colspan="2" >Accion</th>
+            </tr>
+            <tr>
+              <th> <input st-search="juzProceso.pIdProceso"  class="input-sm form-control" type="search" /> </th>
+              <th> <input st-search="tdpNombreTipoDocumento"  class="input-sm form-control" type="search" /> </th>
+              <th> <input st-search="tdpDocumentoFechaCreacion"  class="input-sm form-control" type="search" /> </th>
+              <th> <input st-search="juzTipoDocumentoProceso.fdpNombreJuzTipoDocumento"  class="input-sm form-control" type="search" /> </th>
+  
+              <th> <input st-search="eaNombre"  class="input-sm form-control" type="search" /> </th>
+              <th>  </th>
+  
+              <th>  </th>
+              <th>  </th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr ng-repeat="item in vm.listDocumentos track by $index">
+  
+              <td><a  href="" ng-click="vm.select(this.item)">{{item.juzProceso.pIdProceso}}</a></td>
+              <td><a  href="" ng-click="vm.select(this.item)">{{item.tdpNombreTipoDocumento}}</a></td>
+              <td>  {{ item.tdpDocumentoFechaCreacion | date : "dd-MM-yyyy" }}  </td>     
+              <td>{{item.juzTipoDocumentoProceso.fdpNombreJuzTipoDocumento}}</td>
+  
+  
+              <td>{{item.juzActividadesProceso.juzUsuario.juzPersona.pPrimerNombre}}   
+                  {{item.juzActividadesProceso.juzUsuario.juzPersona.pPrimerApellido}} 
+                  <span class="badge badge-info">  {{item.juzActividadesProceso.juzUsuario.juzRolesUsuario.ruNombreRol}} </span>
+                
+                
+              </td>
+  
+              <td>{{item.juzActividadesProceso.apNombreActividad}}</td>
+    
+              <td ><a  class="btn btn-danger btn-sm" ng-click="vm.deleteDocumentoList(this.item)"><i class="fas fa-trash"></i></a></td>
+   
+              <!--  href="{{vm.download(this.item)}}"  target="_blank"   ng-click="vm.download(this.item)"  -->
+              <td><a  class="btn btn-success btn-sm" ng-click="vm.download(this.item)"  target="_blank"    > 
+                <i class="fas fa-download"></i> </a></td>
+  
+            </tr>
+          </tbody>
+          <tfoot ng-if="vm.foo" >
+            <tr>
+              <td colspan="5" class="text-center">
+                <div  st-pagination="" st-items-by-page="5" st-displayed-pages="5"></div>
+              </td>
+            </tr>
+          </tfoot>
+  
+        </table>
+      </div>
+ 

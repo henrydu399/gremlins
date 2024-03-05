@@ -1,0 +1,61 @@
+<div class="row" >
+
+    <div class="col-lg-12">
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">RESULTADO DE DATOS CONTACTO </h6>
+          </div>
+          <div class="table-responsive p-3">
+            <table conditional="vm.foo" class="table table-striped" st-safe-src="vm.safeListDatosContacto" st-table="vm.listDatosContacto">
+              <thead class="thead-light">
+                <tr>
+                  <th st-sort="dcNumeroTelefonoFijo"># TELEFONO</th>
+                  <th st-sort="dcNumeroTelefonoCelular"># CELULAR</th>
+                  <th st-sort="dcDireccion">DIRECCION</th>
+                  <th st-sort="juzCiudade.nombre">CIUDAD</th>
+                
+   
+      
+                  <th colspan="1">Accion</th>
+                </tr>
+                <tr>
+                  <th> <input st-search="id.dcNumeroTelefonoFijo" class="input-sm form-control" type="search" /> </th>
+
+                  <th> <input st-search="dcNumeroTelefonoCelular" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="dcDireccion" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="juzCiudade.nombre" class="input-sm form-control" type="search" /> </th>
+           
+
+                  <th> </th>
+            
+                </tr>
+              </thead>
+      
+              <tbody>
+                <tr ng-repeat="item in vm.listDatosContacto track by $index">
+      
+      
+                  <td><a href="" ng-click="vm.select(this.item)">{{item.dcNumeroTelefonoFijo}} </a></td>
+                  <td><a href="" ng-click="vm.select(this.item)"></a>{{item.dcNumeroTelefonoCelular}}</a></td>
+                  <td><a href="" ng-click="vm.select(this.item)"></a>{{item.dcDireccion}}</a></td>
+                  <td><a href="" ng-click="vm.select(this.item)"></a>{{item.juzCiudade.nombre}}</a></td>
+              
+                  <td><a class="btn btn-danger btn-sm" ng-click="vm.delet(this.item)"><i class="fas fa-trash"></i></a></td>
+                  </td>
+      
+                </tr>
+              </tbody>
+              <tfoot ng-if="vm.foo">
+                <tr>
+                  <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div>
+                  </td>
+                </tr>
+              </tfoot>
+      
+            </table>
+          </div>
+        </div>
+      </div>
+
+</div>

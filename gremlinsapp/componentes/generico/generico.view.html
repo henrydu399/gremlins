@@ -1,0 +1,74 @@
+
+<div class="row">
+  <h6 class="m-0 font-weight-bold text-primary"> {{vm.nameParametricaView}} </h6>
+  <br>
+  <br>
+</div>
+
+
+<div class="card mb-4">
+  <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary"> PARAMETRICA SELECIONADA : {{vm.modelList.parametricaName}} </h6>
+  </div>
+  <div class="card-body">
+      <form method="post" ng-submit="vm.action()">
+
+
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+              <h6 class="m-0 font-weight-bold text-primary">Nombre parametrica :</h6>
+          </div>
+          <div class="card-body">
+
+              <div class="form-group" >
+                  <select class="select2-single form-control select2-hidden-accessible"   ng-model="vm.parametricaSelectList"    required>
+                      <option ng-repeat="item in vm.listModels track by $index"  value="{{item.idparametrica}}" >{{item.parametricaName}}</option>
+                  </select>
+              </div>
+
+
+          </div>
+
+
+          <button type="button" class="btn btn-primary" ng-click="vm.SelectModelList()" >Seleccionar</button>
+
+
+      </form>
+  </div>
+</div>
+
+
+  <div class="row">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" ng-click="vm.tabSeleccion = 'ver' " type="button" >VER
+          </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" ng-click="vm.tabSeleccion = 'createOrEdit' " type="button" >CREAR
+          / EDITAR</button>
+      </li>
+
+    </ul>
+    <br>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+
+    <div class="slide-animate"  ng-show="vm.tabSeleccion=='ver'" style="width: 100%;" ng-include="'componentes/generico/ver.view.html'"></div>
+
+    <div class="slide-animate"    ng-show="vm.tabSeleccion=='createOrEdit'" style="width: 100%;"  ng-include="'componentes/generico/createOrEdit.view.html'"></div>
+  </div>
+
+
+
+
+
+<script>
+
+
+</script>

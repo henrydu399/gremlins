@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+	<persistence-unit name="gremlinsapi">
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Cliente</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Distribuidore</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Envio</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.EnvioPK</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Estado</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Funcione</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.FuncionePK</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Pedido</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.PedidosDetalle</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.PedidosDetallePK</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Producto</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Role</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.RolePK</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.Usuario</class>
+	</persistence-unit>
+</persistence>

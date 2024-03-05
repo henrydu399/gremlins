@@ -1,0 +1,59 @@
+
+ <div class="table-responsive p-3">
+<table conditional="vm.foo" class="table table-striped" st-safe-src="vm.listImplicadosNotificarTemp" st-table="vm.listImplicadosNotificar">
+    <thead class="thead-light">
+      <tr>
+        <th st-sort="juzPersona.id.pnumeroIdentificacion"> <button><i class="fas fa-align-justify"></i></button> DOCUMENTO</th>
+        <th st-sort="juzPersona.juzTipoDocumento.tiPrefijoTipoDocumento"><button><i class="fas fa-align-justify"></i></button>  TIPO DOCUMENTO</th>
+        <th st-sort="pRolImplicado.rpNombreRol"><button><i class="fas fa-align-justify"></i></button>  ROL</th>
+        <th st-sort="juzPersona.pPrimerNombre"><button><i class="fas fa-align-justify"></i></button>  PRIMER NOMBRE</th>
+  
+        <th st-sort="juzPersona.pPrimerApellido"><button><i class="fas fa-align-justify"></i></button>  PRIMER APELLIDO</th>
+
+  
+        <th colspan="2">Accion</th>
+      </tr>
+      <tr>
+        <th> <input st-search="juzPersona.id.pnumeroIdentificacion" class="input-sm form-control" type="search" /> </th>
+        <th> <input st-search="juzPersona.juzTipoDocumento.tiPrefijoTipoDocumento" class="input-sm form-control"  type="search" /> </th>
+
+        <th> <input st-search="pRolImplicado.rpNombreRol" class="input-sm form-control"  type="search" /> </th>
+
+        <th> <input st-search="juzPersona.pPrimerNombre" class="input-sm form-control" type="search" /> </th>
+
+        <th> <input st-search="juzPersona.pPrimerApellido" class="input-sm form-control" type="search" /> </th>
+
+  
+        <th> </th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr ng-repeat="item in vm.listImplicadosNotificar track by $index">
+  
+  
+        <td><a href="" ng-click="vm.selectPersona22(this.item)" data-dismiss="modal">{{item.juzPersona.id.pnumeroIdentificacion}} </a></td>
+        <td>{{item.juzPersona.juzTipoDocumento.tiPrefijoTipoDocumento}}</td>
+
+        <td><b>  {{item.pRolImplicado.rpNombreRol}}</b> </td>
+
+        <td>{{item.juzPersona.pPrimerNombre}}</td>
+
+        <td>{{item.juzPersona.pPrimerApellido}}</td>
+
+  
+        <td><a class="btn btn-danger btn-sm" ng-click="vm.deletImplicado(this.item)"><i  class="fas fa-trash"></i></a></td>
+        </td>
+  
+      </tr>
+    </tbody>
+    <tfoot ng-if="vm.foo">
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div>
+        </td>
+      </tr>
+    </tfoot>
+  
+  </table>
+</div>

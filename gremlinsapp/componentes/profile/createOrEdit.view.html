@@ -1,0 +1,144 @@
+<div class="card mb-4">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+
+    </div>
+    <div class="card-body">
+
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-lg-4">
+                <form method="post" ng-submit="vm.saveImg()">
+                <img src="{{vm.getImgPerfil()}}" class="img-thumbnail" alt="" height="150" width="150">
+                <br>
+
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="file" name="file"  ng-model="vm.file"  ng-change="vm.selectImg()" required>
+                    <label class="custom-file-label" for="customFile">{{vm.file}} </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+
+            
+                <div class="col-lg-8">
+                    <form method="post" ng-submit="vm.action()">
+
+                    <div class="row">
+                        <h6 class="font-weight-bold text-primary">INFORMACION </h6>
+                    </div>
+
+
+
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">NUMERO IDENTIFICACION:</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="pnumeroIdentificacion"
+                                        name="pnumeroIdentificacion" placeholder="Numero documento"
+                                        ng-model="vm.model.juzPersona.id.pnumeroIdentificacion" string-to-number
+                                        required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">TIPO :</label>
+                                <div class="col-sm-7">
+                                    <select class="select2-single form-control select2-hidden-accessible"
+                                        name="fIdFuncion" id="fIdFuncion" aria-hidden="true"
+                                        ng-model="vm.model.juzPersona.id.ptipoIdentificacion" convert-to-number
+                                        required>
+                                        <option ng-repeat="item in vm.listDocumentos track by $index"
+                                            value="{{item.tiIdTipoDocumento}}">
+                                            {{item.tiPrefijoTipoDocumento}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">SEXO :</label>
+                        <div class="col-sm-7">
+                            <select class="select2-single form-control select2-hidden-accessible" name="fIdFuncion"
+                                id="fIdFuncion" aria-hidden="true" ng-model="vm.model.juzPersona.juzSexo.sIdSexo"
+                                convert-to-number>
+                                <option ng-repeat="item in vm.listSexos track by $index" value="{{item.sIdSexo}}">
+                                    {{item.sDescripcionSexo}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> EMAIL / CORREO ELECTRONICO:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="pSegundoApellido" name="pSegundoApellido"
+                                ng-model="vm.model.uemail">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> PRIMER NOMBRE :</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="pPrimerNombre" name="pPrimerNombre"
+                                ng-model="vm.model.juzPersona.pPrimerNombre" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> SEGUNDO NOMBRE:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="pSegundoNombre" name="pSegundoNombre"
+                                ng-model="vm.model.juzPersona.pSegundoNombre">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> PRIMER APELLIDO:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="pPrimerApellido" name="pPrimerApellido"
+                                ng-model="vm.model.juzPersona.pPrimerApellido" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"> SEGUNDO APELLIDO:</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="pSegundoApellido" name="pSegundoApellido"
+                                ng-model="vm.model.juzPersona.pSegundoApellido">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                    </form>
+                </div>
+            
+        </div>
+
+
+
+    
+
+
+
+
+    </div>
+
+</div>

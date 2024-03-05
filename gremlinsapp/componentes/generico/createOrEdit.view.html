@@ -1,0 +1,37 @@
+
+
+
+<div class="card mb-4" ng-if="vm.modelList !== null ">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary"> {{vm.modelList.parametricaName}} </h6>
+    </div>
+    <div class="card-body">
+        <form method="post" id="idformularioGenerico" name="idformularioGenerico" ng-submit="vm.action()">
+
+
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+               
+            </div>
+            <div class="card-body">
+
+                <div class="form-group" ng-repeat="item in vm.modelList.column track by $index">
+                    <label >{{item.nameLabel}} </label>
+                    <input type="{{vm.typefield(item.type)}}" ng-disabled="item.auto" name="{{item.nameColumn}}"  id = "{{item.nameColumn}}" class="{{vm.getClass(item.type)}}" 
+                          ng-required="{{item.requeride}}"     ng-value="item.value"   >
+                </div>
+
+
+
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary" ng-show="!vm.isEdit">Guardar</button>
+            <button type="submit" class="btn btn-primary" ng-show="vm.isEdit">Editar</button>
+            <button type="button" class="btn btn-primary" ng-click="vm.clean()">Limpiar</button>
+
+            <button type="button" class="btn btn-secondary aling-rigth" ng-click="vm.close()">Cerrar</button>
+
+        </form>
+    </div>
+</div>

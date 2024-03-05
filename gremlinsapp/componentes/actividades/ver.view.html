@@ -1,0 +1,123 @@
+<div class="col-lg-12">
+    
+    <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">FILTROS</h6>
+        </div>
+        <div>
+            <div class="row" style="margin: 5px;;">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="select2Single">TIPO DE LA ACTIVIDAD </label>
+                        <select class="select2-single form-control select2-hidden-accessible" ng-change="vm.get()"
+                            aria-hidden="true" ng-model="vm.filter.tipo" convert-to-number required>
+                            <option value="">SIN FILTRO</option>
+                            <option ng-repeat="item in vm.listTiposActividades track by $index"
+                                value="{{item.tapIdActividad}}">{{item.tapNombreActividad}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label for="select2Single">ESTADO DE LA ACTIVIDAD</label>
+                        <select class="select2-single form-control select2-hidden-accessible"
+                            aria-hidden="true" ng-change="vm.get()" ng-model="vm.filter.estado"
+                            convert-to-number required>
+                            <option value="">SIN FILTRO</option>
+                            <option ng-repeat="item in vm.listEstadosActividades track by $index"
+                                value="{{item.fIdFuncion}}">{{item.fNombreFuncion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for="select2Single">SELECIONAR:</label>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="customSwitch1" ng-change="vm.get()"
+                            ng-model="vm.filter.user">
+                        <label class="custom-control-label" for="customSwitch1">SOLO MIS ACTIVIDADES</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">RESULTADO DE {{vm.nameParametricaView}}S</h6>
+            </div>
+            <div class="table-responsive p-3">
+                <table conditional="vm.foo" class="table table-striped" st-safe-src="vm.safelist"
+                    st-table="vm.listModels">
+                    <thead class="thead-light">
+                        <tr>
+                            <th st-sort="pIdProceso"><i class="fas fa-align-justify"></i> RADICADO</th>
+                            <th st-sort="apFechaCreacion"><i class="fas fa-align-justify"></i> FECHA DE CREACION</th>
+                            <th st-sort="apFechaMaxima"><i class="fas fa-align-justify"></i> FECHA TERMINOS</th>
+                            <th st-sort="eaNombre"><i class="fas fa-align-justify"></i> ESTADO</th>
+                            <th>RESPONSABLE</th>
+                            <th st-sort="ruNombreRol"><i class="fas fa-align-justify"></i> ROL</th>
+                            <th st-sort="apNombreActividad">NOMBRE ACTIVIDAD</th>
+
+
+                            <th colspan="2">Accion</th>
+                        </tr>
+                        <tr>
+                            <th> <input st-search="pIdProceso" class="input-sm form-control" type="search" /> </th>
+                            <th> <input st-search="apFechaCreacion" class="input-sm form-control" type="search" /> </th>
+                            <th> <input st-search="apFechaMaxima" class="input-sm form-control" type="search" /> </th>
+                            <th> <input st-search="eaNombre" class="input-sm form-control" type="search" /> </th>
+                            <th> </th>
+                            <th> <input st-search="nombrePersonaEncargada" class="input-sm form-control"
+                                    type="search" /> </th>
+                            <th> <input st-search="ruNombreRol" class="input-sm form-control" type="search" /> </th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr ng-repeat="item in vm.listModels track by $index">
+                            <td><a href="" ng-click="vm.select(this.item)">{{item.pIdProceso}}</a></td>
+                            <td> {{ item.apFechaCreacion | date : "dd-MM-yyyy" }} </td>
+
+                            <td>
+                                <a href="#" class="btn {{vm.AlertFecha(item.apFechaMaxima)}} btn-icon-split"
+                                    ng-if="item.apFechaMaxima != null">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    <span class="text">{{ item.apFechaMaxima | date : 'dd/MM/yyyy' }} </span>
+                                </a>
+
+                            </td>
+
+                            <td>{{item.eaNombre}}</td>
+
+                            <td>{{item.pPrimerNombre}} {{item.pSegundoNombre}} {{item.pPrimerApellido}}
+                                {{item.pSegundoApellido}}</td>
+                            <td>{{item.ruNombreRol}}</td>
+                            <td>{{item.apNombreActividad}}</td>
+
+                            <td><a class="btn btn-danger btn-sm" ng-click="vm.delet(this.item)"><i
+                                        class="fas fa-trash"></i></a></td>
+                            <td><a class="btn btn-success btn-sm" ng-click="vm.select(this.item)"> <i
+                                        class="fas fa-check"></i> </a></td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot ng-if="vm.foo">
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div>
+                            </td>
+                        </tr>
+                    </tfoot>
+
+                </table>
+            </div>
+
+        </div>
+    </div>

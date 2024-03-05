@@ -1,0 +1,1 @@
+!function(){"use strict";function o(o){this.user=null,this.allUsers=[]}angular.module("app").controller("HomeController",o),o.$inject=["$rootScope"]}();

@@ -1,0 +1,58 @@
+
+      [
+        {
+            "idparametrica" : "JuzTipoDocumento",
+            "parametricaName" : "TIPO DOCUMENTO",
+            "parametricaUrlApi" : "TIPO_IDENTIFICACION",
+            "campos":[
+                {
+                    "nameColumn" : "tiIdTipoDocumento",
+                    "model":"sIdSexo",
+                    "type":"byte",
+                    "auto": true,
+                    "requeride": false,
+                    "max":"1",
+                    "min":"1",
+                    "nameLabel":"ID TIPO DE IDENTIFICACION"   
+                },
+                {
+                    "nameColumn" : "tiPrefijoTipoDocumento",
+                    "model":"sIdSexo",
+                    "type":"String",
+                    "requeride": true,
+                    "max":"5",
+                    "min":"1" ,
+                    "nameLabel":"PREFIJO TIPO DE IDENTIFICACION" 
+                },
+                {
+                    "nameColumn" : "tiTipoDocumento",
+                    "model":"sIdSexo",
+                    "type":"String",
+                    "requeride": true,
+                    "max":"50",
+                    "min":"5",
+                    "nameLabel":"VALOR DE IDENTIFICACION" 
+                },
+                {
+                    "nameColumn" : "tiactivo",
+                    "model":"tiactivo",
+                    "type":"boolean",
+                    "requeride": true,
+                    "nameLabel":"ACTIVO",
+                    "value":"true"
+                },
+                {
+                    "nameColumn" : "tiactivo",
+                    "model":"tiactivo",
+                    "type":"boolean",
+                    "requeride": true,
+                    "nameLabel":"ACTIVO",
+                    "value":"false"
+                }
+
+            ]
+        }
+
+      ] 
+
+    

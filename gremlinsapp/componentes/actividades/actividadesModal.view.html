@@ -1,0 +1,59 @@
+<table  conditional="vm.foo"  class="table table-striped" st-safe-src="vm.safeListActividades" st-table="vm.listActividades">
+    <thead class="thead-light">
+      <tr>
+        <th st-sort="pIdProceso" >RADICADO</th>
+        <th st-sort="pIdProceso" >ID ACTIVIDAD</th>
+        <th st-sort="apFechaMaxima" >FECHA TERMINOS</th>
+        <th st-sort="eaNombre" >ESTADO</th>
+        <th st-sort="ruNombreRol" >ROL</th>
+        <th st-sort="apNombreActividad" >NOMBRE ACTIVIDAD</th>
+
+
+        <th colspan="2" >Accion</th>
+      </tr>
+      <tr>
+        <th> <input st-search="pIdProceso"  class="input-sm form-control" type="search" /> </th>
+        <th> <input st-search="apIdActividad"  class="input-sm form-control" type="search" /> </th>
+        <th> <input st-search="apFechaMaxima"  class="input-sm form-control" type="search" /> </th>
+        <th> <input st-search="eaNombre"  class="input-sm form-control" type="search" /> </th>
+        <th>  </th>
+        <th> <input st-search="ruNombreRol"  class="input-sm form-control" type="search" /> </th>
+        <th> </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="item in vm.listActividades track by $index">
+        <td><a  href="" ng-click="vm.selectActividad(this.item) " data-dismiss="modal">{{item.pIdProceso}}</a></td>
+        <td><a  href="" ng-click="vm.selectActividad(this.item)" data-dismiss="modal">{{item.apIdActividad}}</a></td>
+        
+
+        <td>  
+          <a  class="btn {{vm.AlertFecha(item.apFechaMaxima)}} btn-icon-split" ng-if="item.apFechaMaxima != null" >
+            <span class="icon text-white-50">
+              <i class="fas fa-exclamation-triangle"></i>
+            </span>
+            <span class="text">{{ item.apFechaMaxima | date : 'dd/MM/yyyy' }} </span>
+          </a>
+         
+         </td>
+        
+        <td>{{item.eaNombre}}</td>
+
+        <td>{{item.ruNombreRol}}</td>
+        <td>
+            {{item.apNombreActividad}}</td>
+
+        <td><a  class="btn btn-success btn-sm" ng-click="vm.select(this.item)"> <i class="fas fa-check"></i> </a></td>
+
+      </tr>
+    </tbody>
+    <tfoot ng-if="vm.foo" >
+      <tr>
+        <td colspan="5" class="text-center">
+          <div  st-pagination="10" st-items-by-page="10" st-displayed-pages="10"></div>
+        </td>
+      </tr>
+    </tfoot>
+
+  </table>

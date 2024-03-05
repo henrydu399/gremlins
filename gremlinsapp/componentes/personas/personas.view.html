@@ -1,0 +1,45 @@
+
+<div class="row">
+  <h6 class="m-0 font-weight-bold text-primary"> {{vm.nameParametricaView}} </h6>
+  <br>
+  <br>
+</div>
+
+
+
+
+  <div class="row">
+
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" ng-click="vm.tabSeleccion = 'ver' " type="button" >VER
+          PERSONAS</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" ng-click="vm.tabSeleccion = 'createOrEdit' " type="button" >CREAR
+          / EDITAR</button>
+      </li>
+
+    </ul>
+    <br>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="row">
+
+    <div class="slide-animate" ng-if="vm.tabSeleccion=='ver'" style="width: 100%;" ng-include="'componentes/personas/ver.view.html'"></div>
+
+    <div class="slide-animate"  ng-if="vm.tabSeleccion=='createOrEdit'" style="width: 100%;"  ng-include="'componentes/personas/createOrEdit.view.html'"></div>
+  </div>
+
+
+
+
+
+<script>
+
+
+</script>

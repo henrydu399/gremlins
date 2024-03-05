@@ -1,0 +1,73 @@
+
+<div class="row" >
+
+    <div class="col-lg-12">
+        <div class="card mb-4">
+          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">RESULTADO DE {{vm.nameParametricaView}}S</h6>
+          </div>
+          <div class="table-responsive p-3">
+            <table conditional="vm.foo" class="table table-striped" st-safe-src="vm.safelist" st-table="vm.listModels">
+              <thead class="thead-light">
+                <tr>
+                  <th st-sort="id.pnumeroIdentificacion">NUMERO DOCUMENTO</th>
+                  <th st-sort="juzTipoDocumento.tiPrefijoTipoDocumento">TIPO DOCUMENTO</th>
+                  <th st-sort="pPrimerNombre">PRIMER NOMBRE</th>
+                  <th st-sort="pSegundoNombre">SEGUNDO NOMBRE</th>
+                  <th st-sort="pPrimerApellido">PRIMER APELLIDO</th>
+                  <th st-sort="pSegundoApellido">SEGUNDO APELLIDO</th>
+                  <th st-sort="pEmail">CORREO</th>
+                  <th st-sort="pTelefonoCelular">TELEFONO</th>
+      
+                  <th colspan="2">Accion</th>
+                </tr>
+                <tr>
+                  <th> <input st-search="id.pnumeroIdentificacion" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="juzTipoDocumento.tiPrefijoTipoDocumento" class="input-sm form-control"
+                      type="search" /> </th>
+                  <th> <input st-search="pPrimerNombre" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="pSegundoNombre" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="pPrimerApellido" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="pSegundoApellido" class="input-sm form-control" type="search" /> </th>
+                  <th> <input st-search="pEmail" class="input-sm form-control" type="search" /> </th>
+                  <th> </th>
+                  <th> </th>
+                  <th> </th>
+                </tr>
+              </thead>
+      
+              <tbody>
+                <tr ng-repeat="item in vm.listModels track by $index">
+      
+      
+                  <td><a href="" ng-click="vm.select(this.item)">{{item.id.pnumeroIdentificacion}} </a></td>
+                  <td>{{item.juzTipoDocumento.tiPrefijoTipoDocumento}}</td>
+                  <td>{{item.pPrimerNombre}}</td>
+                  <td>{{item.pSegundoNombre}}</td>
+                  <td>{{item.pPrimerApellido}}</td>
+                  <td>{{item.pSegundoApellido}}</td>
+                  <td>{{item.pEmail}}</td>
+                  <td>{{item.pTelefonoCelular}}</td>
+      
+      
+      
+                  <td><a class="btn btn-danger btn-sm" ng-click="vm.delet(this.item)"><i class="fas fa-trash"></i></a></td>
+                  <td><a class="btn btn-success btn-sm" ng-click="vm.select(this.item)"> <i class="fas fa-check"></i> </a>
+                  </td>
+      
+                </tr>
+              </tbody>
+              <tfoot ng-if="vm.foo">
+                <tr>
+                  <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="10" st-displayed-pages="10"></div>
+                  </td>
+                </tr>
+              </tfoot>
+      
+            </table>
+          </div>
+        </div>
+      </div>
+
+</div>
