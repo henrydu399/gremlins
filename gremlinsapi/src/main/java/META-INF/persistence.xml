@@ -15,5 +15,7 @@
 		<class>co.edu.uniminuto.gremlinsapi.entitys.Role</class>
 		<class>co.edu.uniminuto.gremlinsapi.entitys.RolePK</class>
 		<class>co.edu.uniminuto.gremlinsapi.entitys.Usuario</class>
+		<class>co.edu.uniminuto.gremlinsapi.entitys.ParametricaGenerica</class>
+		
 	</persistence-unit>
 </persistence>
