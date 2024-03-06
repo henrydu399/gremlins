@@ -34,7 +34,7 @@ public class UsuarioController implements IController<Usuario> {
     }
 
     @Override
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<Object> getAll() {
         try {
             List<Usuario> list = this.usuarioBusiness.getAll();

@@ -14,6 +14,6 @@ public class ErrorContanst {
 	    
 	    // ERRORES ENTIDAD USUARIO 
 	    public static final String USUARIO_A_MODIFICAR_NO_EXISTE = "Error al guardar el usuario a modificar no existe";
-	    
+	    public static final String USUARIO_EXISTENTE_CON_EMAIL = "Ya existe un usuario con ese email";
 	    
 }

@@ -12,6 +12,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     // Aquí puedes agregar métodos personalizados de ser necesario
 	
 	 Usuario findByEmailAndPassword(String email, String password);
-	
+	 Usuario findByEmail(String email);
 	
 }

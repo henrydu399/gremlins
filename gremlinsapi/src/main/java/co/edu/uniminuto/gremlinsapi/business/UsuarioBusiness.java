@@ -1,6 +1,7 @@
 package co.edu.uniminuto.gremlinsapi.business;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -30,6 +31,9 @@ public class UsuarioBusiness implements ILogic<Usuario> {
         try {
             return this.usuarioRepository.findAll();
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.READ_ERROR + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.READ_ERROR, e);
         }
@@ -38,8 +42,18 @@ public class UsuarioBusiness implements ILogic<Usuario> {
     @Override
     public void save(Usuario u) throws GeneralException {
         try {
+        	
+        	Usuario user = this.usuarioRepository.findByEmail(u.getEmail());
+        	
+        	if ( Objects.nonNull(user)) {
+        		throw new GeneralException(HttpStatus.BAD_REQUEST, ErrorContanst.USUARIO_EXISTENTE_CON_EMAIL, null);
+        	}
+        	
             this.usuarioRepository.save(u);
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE, e);
         }
@@ -54,6 +68,9 @@ public class UsuarioBusiness implements ILogic<Usuario> {
             }
             this.usuarioRepository.save(p);
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE, e);
         }
@@ -68,6 +85,9 @@ public class UsuarioBusiness implements ILogic<Usuario> {
             }
             this.usuarioRepository.delete(p);
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.DELETE_ERROR + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.DELETE_ERROR, e);
         }
@@ -81,9 +101,13 @@ public class UsuarioBusiness implements ILogic<Usuario> {
                 usuario.setEstado(Estados.DESACTIVADO.name()  );
                 this.usuarioRepository.save(usuario);
             } else {
+            	
                 throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.USUARIO_A_MODIFICAR_NO_EXISTE, null);
             }
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.DELETE_ERROR + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.DELETE_ERROR, e);
         }
@@ -106,6 +130,9 @@ public class UsuarioBusiness implements ILogic<Usuario> {
             // Implementa tu lógica de búsqueda personalizada aquí si es necesario
             return null;
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE, e);
         }
