@@ -19,7 +19,7 @@ public class DistribuidoreDTO implements Serializable {
     private String dNit;
     private String dRazonSocial;
     private String dTelefono;
-    private String dEstado;
+    private EstadoDTO dEstado;
     private List<ProductoDTO> productos;
 }
 

@@ -2,6 +2,8 @@ package co.edu.uniminuto.gremlinsapi.exceptions;
 
 import org.springframework.http.HttpStatus;
 
+import co.edu.uniminuto.gremlinsapi.utils.UtilGson;
+
 public class GeneralException  extends RuntimeException{
 	
 	  private static final long serialVersionUID = 1L;
@@ -27,7 +29,7 @@ public class GeneralException  extends RuntimeException{
 	    }
 
 		public String getMessageLogical() {
-			return messageLogical;
+			return   UtilGson.SerializeObjet(messageLogical);
 		}
 
 		public void setMessageLogical(String messageLogical) {

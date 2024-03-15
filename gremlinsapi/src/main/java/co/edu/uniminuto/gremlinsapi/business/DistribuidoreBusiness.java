@@ -14,9 +14,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import co.edu.uniminuto.gremlinsapi.entitys.Distribuidore;
+import co.edu.uniminuto.gremlinsapi.entitys.Estado;
 import co.edu.uniminuto.gremlinsapi.enums.Estados;
 import co.edu.uniminuto.gremlinsapi.exceptions.GeneralException;
 import co.edu.uniminuto.gremlinsapi.repositorys.DistribuidorRepository;
+import co.edu.uniminuto.gremlinsapi.repositorys.EstadoRepository;
 
 @Service
 public class DistribuidoreBusiness implements ILogic<Distribuidore> {
@@ -26,6 +28,8 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
 
     @Autowired
     private Validator validator;
+    
+    @Autowired private  EstadoRepository EstadoRepository;
 
     @Autowired
     public DistribuidoreBusiness(DistribuidorRepository distribuidorRepository) {
@@ -37,6 +41,9 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
         try {
             return distribuidorRepository.findAll();
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe("Error en getAll: " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al obtener todos los distribuidores", e);
         }
@@ -83,6 +90,9 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
             }
             return null;
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe("Error en findT: " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al buscar el distribuidor", e);
         }
@@ -94,6 +104,9 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
             // Aquí puedes implementar la lógica para buscar por algún criterio específico si es necesario
             return distribuidorRepository.findAll();
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe("Error en findAllT: " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al buscar todos los distribuidores", e);
         }
@@ -108,6 +121,9 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
             }
             distribuidorRepository.delete(distribuidor);
         } catch (Exception e) {
+        	if( e instanceof GeneralException) {
+        		throw e;
+        	}
             LOGGER.severe("Error en delete: " + e.getMessage());
             throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al eliminar el distribuidor", e);
         }
@@ -120,7 +136,9 @@ public class DistribuidoreBusiness implements ILogic<Distribuidore> {
             if (!optionalDistribuidor.isPresent()) {
                 throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "El distribuidor a eliminar no existe", null);
             }
-            optionalDistribuidor.get().setDEstado(Estados.DESACTIVADO.name());
+            Optional<Estado> estado = EstadoRepository.findById(Estados.ACTIVO.name());
+            
+            optionalDistribuidor.get().setDEstado(estado.get()); 
             this.distribuidorRepository.save(optionalDistribuidor.get());
         } catch (Exception e) {
             LOGGER.severe("Error en delete: " + e.getMessage());

@@ -42,7 +42,7 @@ public class ClienteController implements  IController<Cliente>{
 
 	@PostMapping(value = "/" , produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public ResponseEntity<Object> save(Cliente c) {
+	public ResponseEntity<Object> save(@RequestBody Cliente c) {
 		try {
 			  this.clienteBusiness.save(c);
 			return new ResponseEntity<Object>(null, HttpStatus.CREATED);
@@ -55,7 +55,7 @@ public class ClienteController implements  IController<Cliente>{
 
 	@PutMapping(value = "/" , produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public ResponseEntity<Object> edith(Cliente c) {
+	public ResponseEntity<Object> edith(@RequestBody Cliente c) {
 		try {
 			  this.clienteBusiness.save(c);
 			return new ResponseEntity<Object>(null, HttpStatus.ACCEPTED);
@@ -68,7 +68,7 @@ public class ClienteController implements  IController<Cliente>{
 
     @PostMapping(value = "/findT/" , produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public ResponseEntity<Object> findT(Cliente c) {
+	public ResponseEntity<Object> findT(@RequestBody Cliente c) {
 		try {
 			Cliente cliente = this.clienteBusiness.findT(c);
 			return new ResponseEntity<Object>(cliente, HttpStatus.OK);
@@ -108,7 +108,7 @@ public class ClienteController implements  IController<Cliente>{
     
     @PostMapping(value = "/desactivate/" , produces = MediaType.APPLICATION_JSON_VALUE)
 	@Override
-	public ResponseEntity<Object> desactivate(Cliente c) {
+	public ResponseEntity<Object> desactivate(@RequestBody Cliente c) {
 		try {
 			  this.clienteBusiness.desactivate(c);
 			return new ResponseEntity<Object>(null, HttpStatus.OK);

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -49,10 +51,12 @@ public class Producto implements Serializable {
 	    private String pEstado;
 
 	//bi-directional many-to-one association to PedidosDetalle
+	  @JsonIgnore
 	@OneToMany(mappedBy="producto")
 	private List<PedidosDetalle> pedidosDetalles;
 
 	//bi-directional many-to-one association to Distribuidore
+	  
 	@ManyToOne
 	@JoinColumn(name="p_distribuidor_id")
 	private Distribuidore distribuidore;

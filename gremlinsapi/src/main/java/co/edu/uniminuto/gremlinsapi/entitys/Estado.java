@@ -10,6 +10,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import co.edu.uniminuto.gremlinsapi.anotations.ILabelName;
 import co.edu.uniminuto.gremlinsapi.anotations.ILabelParametricaName;
 import lombok.AllArgsConstructor;
@@ -36,10 +38,11 @@ public class Estado implements Serializable {
 	private String esNombre;
 
 	//bi-directional many-to-one association to Envio
+	@JsonIgnore
 	@OneToMany(mappedBy="estado")
 	private List<Envio> envios;
 
-	//bi-directional many-to-one association to Pedido
+	@JsonIgnore
 	@OneToMany(mappedBy="estado")
 	private List<Pedido> pedidos;
 

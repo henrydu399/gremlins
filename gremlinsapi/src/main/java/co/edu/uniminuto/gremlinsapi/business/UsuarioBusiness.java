@@ -41,14 +41,11 @@ public class UsuarioBusiness implements ILogic<Usuario> {
 
     @Override
     public void save(Usuario u) throws GeneralException {
-        try {
-        	
-        	Usuario user = this.usuarioRepository.findByEmail(u.getEmail());
-        	
+        try {  	
+        	Usuario user = this.usuarioRepository.findByEmail(u.getEmail());	
         	if ( Objects.nonNull(user)) {
         		throw new GeneralException(HttpStatus.BAD_REQUEST, ErrorContanst.USUARIO_EXISTENTE_CON_EMAIL, null);
-        	}
-        	
+        	}   	
             this.usuarioRepository.save(u);
         } catch (Exception e) {
         	if( e instanceof GeneralException) {

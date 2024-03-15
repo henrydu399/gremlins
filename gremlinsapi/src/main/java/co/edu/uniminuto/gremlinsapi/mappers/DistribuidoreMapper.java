@@ -22,7 +22,7 @@ public class DistribuidoreMapper {
                 .dNit(distribuidor.getDNit())
                 .dRazonSocial(distribuidor.getDRazonSocial())
                 .dTelefono(distribuidor.getDTelefono())
-                .dEstado(distribuidor.getDEstado())
+                .dEstado(  EstadoMapper.mapEstadoToDTO(distribuidor.getDEstado()) )
                 .build();
     }
 
@@ -35,7 +35,7 @@ public class DistribuidoreMapper {
                 .dNit(distribuidorDTO.getDNit())
                 .dRazonSocial(distribuidorDTO.getDRazonSocial())
                 .dTelefono(distribuidorDTO.getDTelefono())
-                .dEstado(distribuidorDTO.getDEstado())
+                .dEstado(EstadoMapper.mapDTOToEstado (distribuidorDTO.getDEstado()))
                 .build();
     }
 }

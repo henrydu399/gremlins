@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -48,11 +50,15 @@ public class Distribuidore implements Serializable {
 	@Column(name="d_telefono")
 	private String dTelefono;
 	
-	 @NotBlank(message = "EL estado del distribuidor es obligatoria")
-	    @Column(name = "d_estado")
-	    private String dEstado;
+	
+	 
+	//bi-directional many-to-one association to Estado
+		@ManyToOne
+		@JoinColumn(name="d_estado")
+		private Estado dEstado;
 
 	//bi-directional many-to-one association to Producto
+		  @JsonIgnore
 	@OneToMany(mappedBy="distribuidore")
 	private List<Producto> productos;
 

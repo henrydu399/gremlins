@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 
 import co.edu.uniminuto.gremlinsapi.constans.ErrorContanst;
 import co.edu.uniminuto.gremlinsapi.entitys.Cliente;
+import co.edu.uniminuto.gremlinsapi.entitys.Usuario;
 import co.edu.uniminuto.gremlinsapi.enums.Estados;
+import co.edu.uniminuto.gremlinsapi.enums.RolEnum;
 import co.edu.uniminuto.gremlinsapi.exceptions.GeneralException;
 import co.edu.uniminuto.gremlinsapi.repositorys.ClienteRepository;
+import co.edu.uniminuto.gremlinsapi.repositorys.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +25,8 @@ public class ClienteBusiness implements ILogic<Cliente> {
 
     private static final Logger LOGGER = Logger.getLogger(ClienteBusiness.class.getName());
 	private final ClienteRepository clienteRepository;
+	
+	@Autowired private UsuarioRepository usuarioRepository;
     
 
     @Autowired
@@ -34,6 +39,9 @@ public class ClienteBusiness implements ILogic<Cliente> {
 		try {
 			return this.clienteRepository.findAll();
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.READ_ERROR + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.READ_ERROR , e);
 		}
@@ -42,8 +50,21 @@ public class ClienteBusiness implements ILogic<Cliente> {
 	@Override
 	public void save(Cliente c) throws GeneralException {
 		try {
+			
+			Optional<Usuario> user =  usuarioRepository.findById(c.getCUsuario().getId());	
+			if(user.isPresent()){
+				if( !user.get().getRole().getId().getRNombre().equals(RolEnum.CLIENTE.name())) {
+					throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "LOS CLIENTES SOLO PUEDEN ESTAR ASOCIADOS A USUARIOS DE ROL CLIENTE" , null);
+				}
+			}
+			
+			
+			
 			 this.clienteRepository.save(c);
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE , e);
 		}
@@ -57,8 +78,20 @@ public class ClienteBusiness implements ILogic<Cliente> {
 			if(!optionalCliente.isPresent()) {
 				throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CLIENTE_A_MODIFICAR_NO_EXISTE , null);
 			}
+			
+			Optional<Usuario> user =  usuarioRepository.findById(c.getCUsuario().getId());
+			
+			if(user.isPresent()){
+				if( !user.get().getRole().getId().getRNombre().equals(RolEnum.CLIENTE.name())) {
+					throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, "LOS CLIENTES SOLO PUEDEN ESTAR ASOCIADOS A USUARIOS DE ROL CLIENTE" , null);
+				}
+			}
+			
 			 this.clienteRepository.save(c);
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE , e);
 		}
@@ -75,6 +108,9 @@ public class ClienteBusiness implements ILogic<Cliente> {
 			}
 			 this.clienteRepository.delete(c);;
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.DELETE_ERROR + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.DELETE_ERROR , e);
 		}
@@ -91,6 +127,9 @@ public class ClienteBusiness implements ILogic<Cliente> {
 			}
 			 this.clienteRepository.save(c);
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.DELETE_ERROR + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.DELETE_ERROR , e);
 		}
@@ -107,6 +146,9 @@ public class ClienteBusiness implements ILogic<Cliente> {
 			
 			return null;
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE , e);
 		}
@@ -117,6 +159,9 @@ public class ClienteBusiness implements ILogic<Cliente> {
 		try {
 			 return this.clienteRepository.findAllT(p);
 		}catch (Exception e) {
+			if( e instanceof GeneralException) {
+        		throw e;
+        	}
 			LOGGER.severe(ErrorContanst.CREATE_SAVE + " " + e.getMessage());
 			throw new GeneralException(HttpStatus.INTERNAL_SERVER_ERROR, ErrorContanst.CREATE_SAVE , e);
 		}
